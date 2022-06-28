@@ -13,17 +13,18 @@ exports.getAddProduct = (req, res, next) => {
 
 exports.postAddProduct = (req, res, next) => {
   // products.push({ title: req.body.title });
-  const product = new Product(req.body.title);
+  const { title, imageURL, price, description } = req.body;
+  const product = new Product(title, imageURL, price, description);
   product.save();
   res.redirect("/");
 };
 
 exports.getProducts = (req, res) => {
   Product.fetchAll((products) => {
-    res.render("shop/product-list", {
+    res.render("admin/products", {
       prods: products,
-      pageTitle: "Shop",
-      path: "/",
+      pageTitle: "Products",
+      path: "/products",
       hasProducts: products.length > 0,
       activeShop: true,
       productCSS: true,
