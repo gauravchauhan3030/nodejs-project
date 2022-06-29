@@ -13,6 +13,7 @@ exports.getAddProduct = (req, res, next) => {
 
 exports.postAddProduct = (req, res, next) => {
   // products.push({ title: req.body.title });
+  console.log("req.body", req.body);
   const { title, imageURL, price, description } = req.body;
   const product = new Product(title, imageURL, price, description);
   product.save();
