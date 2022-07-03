@@ -1,6 +1,5 @@
 const path = require("path");
 const fs = require("fs");
-const Product = require("../models/product");
 
 module.exports = class Cart {
   static addProduct(id, productPrice) {
